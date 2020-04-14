@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2020 Ferran Sánchez <ferran.sanchez@qubiq.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data noupdate="1">
+        <record id="email_template_mis_report" model="mail.template">
+            <field name="name">MIS Report: send report email</field>
+            <field name="email_from"></field>
+            <field name="subject">MIS Report</field>
+            <field name="partner_to"></field>
+            <field name="model_id" ref="mis_report_mail.model_mis_report_instance"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="mis_builder.qweb_pdf_export"/>
+            <field name="report_name">MIS_Report_${object.name}</field>
+            <field name="body_html" type="html">
+                <div>
+                    <p>Dear client</p>
+                    <p>The following report is attached to this message: ${object.name}.</p>
+                    <p>We remain at your disposal for anything you may need about it.</p>
+                    <p>Receive a cordial greeting</p>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>
